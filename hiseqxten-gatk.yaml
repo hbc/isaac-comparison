@@ -2,11 +2,13 @@
 # on HiSeq X Ten data from Garvan Institute, AllSeq and DNAnexus:
 # http://allseq.com/x-ten-test-data
 # Uses bwa-mem and GATK HaplotypeCaller, validating against the
-# Genome in a Bottle NA12878 reference
+# Genome in a Bottle NA12878 reference.
+# Also includes validation of pre-called iSAAC output.
 ---
 details:
   - analysis: variant2
     genome_build: GRCh37
+    description: NA12878-gatk
     files:
       - s3://dnanexus-rnd/NA12878-xten/reads/NA12878D_HiSeqX_R1.fastq.gz
       - s3://dnanexus-rnd/NA12878-xten/reads/NA12878D_HiSeqX_R2.fastq.gz
@@ -19,6 +21,14 @@ details:
       platform: illumina
       quality_format: Standard
       coverage_interval: genome
+      remove_lcr: true
+      validate: s3://bcbio/giab/GiaB_NIST_RTG_v0_2.vcf.gz
+      validate_regions: s3://bcbio/giab/GiaB_NIST_RTG_v0_2_regions.bed
+  - analysis: variant2
+    genome_build: GRCh37
+    description: NA12878-isaac
+    vrn_file: s3://bcbio/hiseqxten/NA12878-isaac.vcf.gz
+    algorithm:
       remove_lcr: true
       validate: s3://bcbio/giab/GiaB_NIST_RTG_v0_2.vcf.gz
       validate_regions: s3://bcbio/giab/GiaB_NIST_RTG_v0_2_regions.bed
