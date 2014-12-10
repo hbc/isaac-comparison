@@ -31,13 +31,13 @@ Run on a single [Amazon EC2 r3.8xlarge instance](http://aws.amazon.com/ec2/insta
 32 cores and 244Gb of memory, using an
 [EBS provisioned SSD volume with 3000 IOPS](https://aws.amazon.com/ebs/details/#PIOPS).
 
-|                         | Isaac | bwa + GATK |
-|-------------------------+-------+------------|
+| Step                    | Isaac | bwa + GATK |
+| ----------------------- |------ | ---------- |
 | alignment               |  4:33 |       8:49 |
 | callable regions        |       |       0:45 |
 | variant calling         |  0:45 |       3:08 |
 | variant post-processing |       |       0:46 |
-|-------------------------+-------+------------|
+| ----------------------- | ----- | ---------- |
 | total                   |  5:28 |      13:28 |
 
 - [Validation and resource usage plots](http://imgur.com/a/eUnOS)
