@@ -22,8 +22,11 @@ details:
       quality_format: Standard
       coverage_interval: genome
       remove_lcr: true
+      tools_off: [gemini]
       validate: s3://bcbio/giab/GiaB_NIST_RTG_v0_2.vcf.gz
       validate_regions: s3://bcbio/giab/GiaB_NIST_RTG_v0_2_regions.bed
+    metadata:
+      batch: NA12878-cmp
   - analysis: variant2
     genome_build: GRCh37
     description: NA12878-isaac
@@ -32,3 +35,5 @@ details:
       remove_lcr: true
       validate: s3://bcbio/giab/GiaB_NIST_RTG_v0_2.vcf.gz
       validate_regions: s3://bcbio/giab/GiaB_NIST_RTG_v0_2_regions.bed
+    metadata:
+      batch: NA12878-cmp

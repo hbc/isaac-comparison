@@ -1,10 +1,15 @@
 ## Isaac and bwa-GATK comparison
 
-Comparison between two calling approaches:
+Compared two calling approaches:
 
-- Illumina's Isaac [aligner](https://github.com/sequencing/isaac_aligner) and
-  [variant caller](https://github.com/sequencing/isaac_variant_caller)
-- [bwa-mem](https://github.com/lh3/bwa) and [GATK HaplotypeCaller](https://www.broadinstitute.org/gatk/guide/best-practices)
+- Illumina's Isaac [aligner](https://github.com/sequencing/isaac_aligner)
+  (01.14.11.27) and
+  [variant caller](https://github.com/sequencing/isaac_variant_caller) (1.0.6)
+- [bwa-mem](https://github.com/lh3/bwa) (0.7.10) and
+  [GATK HaplotypeCaller](https://www.broadinstitute.org/gatk/guide/best-practices) (3.3-0)
+
+Uses [HiSeq X Ten data from the Garvan Institute, DNAnexus and AllSeq](http://allseq.com/x-ten-test-data)
+with 800 million 150bp paired reads (40x coverage).
 
 ### Running
 
@@ -21,5 +26,18 @@ See [isaac_run.md](https://github.com/hbc/isaac-comparison/blob/master/isaac_run
 for command lines for running Isaac.
 
 ### Results
+
+Run on a single [Amazon EC2 r3.8xlarge instance](http://aws.amazon.com/ec2/instance-types/) with
+32 cores and 244Gb of memory, using an
+[EBS provisioned SSD volume with 3000 IOPS](https://aws.amazon.com/ebs/details/#PIOPS).
+
+|                         | Isaac | bwa + GATK |
+|-------------------------+-------+------------|
+| alignment               |  4:33 |       8:49 |
+| callable regions        |       |       0:45 |
+| variant calling         |  0:45 |       3:08 |
+| variant post-processing |       |       0:46 |
+|-------------------------+-------+------------|
+| total                   |  5:28 |      13:28 |
 
 - [Validation and resource usage plots](http://imgur.com/a/eUnOS)
